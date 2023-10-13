@@ -1,5 +1,15 @@
-import React, { memo } from "react";
-function EditPost(){
+import React, { memo, useEffect, useState } from "react";
+function EditPost(props){
+    const {isEditData, getPosts} = props;
+    const [title,setTitle] = useState("");
+    const [body,setBody] = useState("");
+    useEffect(()=>{
+        if(isEditData){
+            setTitle(isEditData.title);
+            setBody(isEditData.body);
+        }
+    },[isEditData]);
+
     return(
         <div className="modal fade" id="edit-post">
         <div className="modal-dialog">
@@ -13,12 +23,12 @@ function EditPost(){
                         <input type="hidden" name="post_id" id="edit_post_id"/>
                         <div className="form-group">
                             <label>Title</label>
-                            <input type="text" className="form-control" id="edit_post_title" placeholder="Title"/>
+                            <input type="text" value={title} onChange={(event)=> setTitle(event.target.value)} className="form-control" id="edit_post_title" placeholder="Title"/>
                         </div>
     
                         <div className="form-group">
                             <label>Body</label>
-                            <textarea name="" id="edit_post_body" cols="30" rows="10" placeholder="Body"
+                            <textarea name="" value={body} onChange={(event)=> setBody(event.target.value)} id="edit_post_body" cols="30" rows="10" placeholder="Body"
                                 className="form-control"></textarea>
                         </div>
     
