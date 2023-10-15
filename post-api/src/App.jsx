@@ -34,9 +34,18 @@ function App() {
     };
   };
 
-  const editPostBtnHandler = (event) => {
+  const editPostBtnHandler = useCallback( async (event,id) => {
     event.preventDefault();
-  }
+    fetch(`${apiBaseUrl}/posts/${id}`)
+    .then((res)=> res.json())
+    .then((data)=>{
+      let $ = window.$;
+      $("#edit-post").modal("show");
+      setIsEditData(data);
+    })
+    .catch(()=>console.error);
+  },[posts]
+  )
   return (
     <div className="container">
       <h1>Posts</h1>
