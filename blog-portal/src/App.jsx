@@ -26,7 +26,7 @@ function App() {
   return (
     <>
     <ConfigProvider theme={antdDesignConfig}>
-      <QueryClientProvider client={QueryClient}>
+      <QueryClientProvider client={queryClient}>
         <div className="app">
           <BrowserRouter>
           {authenticated ? (<AuthenticatedRoutes/>) : (<UnAuthenticatedRoutes/>)} 
@@ -39,4 +39,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
