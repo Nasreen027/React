@@ -1,4 +1,7 @@
 export const UnAuthenticatedRoutesNames = {
-    Home : "/",
-    Login : "/login"
+    HOME: "/",
+    LOGIN: "/login",
+    POST_DETAIL: "/post/:id",
+    CATEGORY_DETAIL: "/category/:id",
+    SEARCH_DETAIL : "/search/:searchDetail"
 }
