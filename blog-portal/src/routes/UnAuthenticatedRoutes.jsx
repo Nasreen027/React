@@ -7,15 +7,17 @@ import Login from "../pages/Login";
 import PostDetail from "../pages/PostDetail";
 import CategoryDetail from "../pages/CategoryDetail";
 import SearchDetail from "../pages/SearchDetail";
+import Register from "../pages/Register";
 function UnAuthenticatedRoutes() {
     return (
         <Routes>
             <Route element={<FrontendLayout />} >
                 <Route path={UnAuthenticatedRoutesNames.HOME} element={<Home />} />
-                <Route path={UnAuthenticatedRoutesNames.LOGIN} element={<Login />} />
                 <Route path={UnAuthenticatedRoutesNames.POST_DETAIL} element={<PostDetail />} />
                 <Route path={UnAuthenticatedRoutesNames.CATEGORY_DETAIL} element={<CategoryDetail />} />
                 <Route path={UnAuthenticatedRoutesNames.SEARCH_DETAIL} element={<SearchDetail />} />
+                <Route path={UnAuthenticatedRoutesNames.LOGIN} element={<Login />} />
+                <Route path={UnAuthenticatedRoutesNames.REGISTER} element={<Register />} />
             </Route>
         </Routes>
     )

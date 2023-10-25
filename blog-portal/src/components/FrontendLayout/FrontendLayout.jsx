@@ -4,7 +4,8 @@ import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { UnAuthenticatedRoutesNames } from "../../utilities/util.constant";
 import { useQuery } from "react-query";
 import { CategoryServices } from "../../services/categories.services";
-import {message, notification} from "antd";
+import { message, notification } from "antd";
+import { AuthUtils } from "../../utilities/Auth.utils";
 
 function FrontendLayout() {
   const navigate = useNavigate();
@@ -24,14 +25,14 @@ function FrontendLayout() {
   );
   const onSearchSubmitHandler = (event) => {
     event.preventDefault();
-    if(!searchInputValue){
-    notification.warning({
-      message : "Please fill out the field first",
-      placement : "topRight" 
-    });
-    return;
+    if (!searchInputValue) {
+      notification.warning({
+        message: "Please fill out the field first",
+        placement: "topRight"
+      });
+      return;
     }
-    else{
+    else {
       navigate(
         UnAuthenticatedRoutesNames.SEARCH_DETAIL.replace(
           ":searchDetail",
@@ -60,9 +61,6 @@ function FrontendLayout() {
             <Link className="navbar-brand" to={UnAuthenticatedRoutesNames.HOME}>
               Home
             </Link>
-            <Link className="navbar-brand" to={UnAuthenticatedRoutesNames.LOGIN}>
-              Login
-            </Link>
           </div>
 
           <div
@@ -71,7 +69,7 @@ function FrontendLayout() {
           >
             <ul className="nav navbar-nav">
               {showFiveCategoriesMemo?.map((singleCategory, index) => (
-                <li key={index} >
+                <li key={index}>
                   <Link to={UnAuthenticatedRoutesNames.CATEGORY_DETAIL.replace(
                     ":id", singleCategory?.cat_id
                   )} >
@@ -79,6 +77,29 @@ function FrontendLayout() {
                   </Link>
                 </li>
               ))}
+              {AuthUtils.isUserLoggedIn() ? (
+                <li><a onClick={(event) => {
+                  event.preventDefault();
+                  AuthUtils.removeToken();
+                  window.location.reload(true);
+                }}>
+                  Logout
+                </a>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link className="navbar-brand" to={UnAuthenticatedRoutesNames.LOGIN}>
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="navbar-brand" to={UnAuthenticatedRoutesNames.REGISTER}>
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
