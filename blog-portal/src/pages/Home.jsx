@@ -13,7 +13,7 @@ function Home() {
     );
   
     return (
-      <div>
+      <div className=''>
         <h1 className="page-header">All Posts</h1>
         {getPostDataMemo?.map((singlePost) => {
             // console.log(singlePost,'singlePost');
