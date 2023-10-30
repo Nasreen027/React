@@ -6,6 +6,7 @@ import { useQuery } from "react-query";
 import { CategoryServices } from "../../services/categories.services";
 import { message, notification } from "antd";
 import { AuthUtils } from "../../utilities/Auth.utils";
+import { AuthServices } from "../../services/auth.services";
 
 function FrontendLayout() {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ function FrontendLayout() {
                   </Link>
                 </li>
               ))}
-              {AuthUtils.isUserLoggedIn() ? (
+              {AuthServices.isUserLoggedIn() ? (
                 <li><a onClick={(event) => {
                   event.preventDefault();
                   AuthUtils.removeToken();

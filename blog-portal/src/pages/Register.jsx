@@ -5,7 +5,7 @@ const { Title } = Typography;
 
 function Register() {
     const onFinish = (values) => {
-        console.log(values, "on submit values");
+        // console.log(values, "on submit values");
     };
     return (
         <div>

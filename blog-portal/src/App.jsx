@@ -4,6 +4,7 @@ import { ConfigProvider } from 'antd';
 import { BrowserRouter } from 'react-router-dom';
 import AuthenticatedRoutes from './routes/AuthenticatedRoutes';
 import UnAuthenticatedRoutes from './routes/UnAuthenticatedRoutes';
+import { AuthServices } from './services/auth.services';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,7 @@ const antdDesignConfig = {
 };
 
 function App() {
- const authenticated = false;
+ const authenticated = AuthServices.isUserLoggedIn();
   return (
     <>
     <ConfigProvider theme={antdDesignConfig}>

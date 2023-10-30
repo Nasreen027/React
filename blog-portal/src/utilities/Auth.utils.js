@@ -11,18 +11,7 @@ const saveToken = (token) => {
 const removeToken = () => {
     localStorage.removeItem(AuthUtilConstent.USER_TOKEN)
 }
-
-const isUserLoggedIn = () => {
-    const token = localStorage.getItem(AuthUtilConstent.USER_TOKEN);
-    if(!token){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
 export const AuthUtils = {
     saveToken,
     removeToken,
-    isUserLoggedIn
 }
