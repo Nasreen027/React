@@ -8,7 +8,10 @@ export const UnAuthenticatedRoutesNames = {
 };
 export const AuthenticatedRoutesNames = {
     HOME: "/",
-    CATEGORIES: "/categories"
+    CATEGORIES: "/categories",
+    POSTS: "/posts",
+    CATEGORY_ADD: "/category/add",
+    POST_ADD: "/posts/add"
 }
 export const AuthUtilConstent = {
     USER_TOKEN: "token"

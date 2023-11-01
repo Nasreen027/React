@@ -1,7 +1,7 @@
 import { ApiService } from "../utilities/Api.service";
 
 const categoriesServicesUrls = {
-    getCategoriesUrl : "/categories",
+    getCategoriesUrl: "/categories",
 };
 
 const getCategories = () => {
@@ -10,11 +10,24 @@ const getCategories = () => {
 };
 
 const getCategoryById = (categoryId) => {
-    const response =ApiService.get(`${categoriesServicesUrls.getCategoriesUrl}/${categoryId}`)
+    const response = ApiService.get(`${categoriesServicesUrls.getCategoriesUrl}/${categoryId}`);
     return response;
+};
+
+const deleteCategoryById = (categoryId) => {
+    const response = ApiService.delete(`${categoriesServicesUrls.getCategoriesUrl}/${categoryId}`);
+    return response;
+};
+
+const addCategory = (payload) => {
+// console.log(payload,'payload');
+const response = ApiService.post(categoriesServicesUrls,payload);
+return response;
 }
 
 export const CategoryServices = {
     getCategories,
-    getCategoryById
+    getCategoryById,
+    deleteCategoryById,
+    addCategory
 };

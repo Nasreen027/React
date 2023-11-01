@@ -14,7 +14,14 @@ const getPostById = (postId) => {
     return response;
 }
 
+const addPost = (payload) => {
+// console.log(payload,'payload');
+const response = ApiService.post(postServicesUrls, payload);
+return response;
+}
+
 export const PostServices = {
     getPosts,
-    getPostById
+    getPostById,
+    addPost
 };

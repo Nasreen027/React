@@ -20,9 +20,7 @@ function Login() {
                         message: "logged in succesfully",
                         placement: "topRight"
                     });
-                    setTimeout(() => {
-                        window.location.reload(true)
-                    }, 1500);
+                    window.location.href = "/";
                 }
                 else {
                     notification.error({
