@@ -20,8 +20,14 @@ const response = ApiService.post(postServicesUrls, payload);
 return response;
 }
 
+const deletePostById = (id) => {
+    const response = ApiService.delete(`${postServicesUrls.getPosts}/${id}`);
+    return response;
+}
+
 export const PostServices = {
     getPosts,
     getPostById,
-    addPost
+    addPost,
+    deletePostById
 };

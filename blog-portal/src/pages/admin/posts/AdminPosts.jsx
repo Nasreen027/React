@@ -1,13 +1,16 @@
-import { Button, Col, Image, Row, Table } from 'antd'
+import { Button, Col, Image, Modal, Row, Table, message } from 'antd'
 import React, { useMemo } from 'react'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import { PostServices } from '../../../services/post.services'
 import { useNavigate } from 'react-router-dom'
 import { AuthenticatedRoutesNames } from '../../../utilities/util.constant'
+import { ExclamationCircleOutlined } from '@ant-design/icons'
+const {confirm} = Modal;
 
 function AdminPosts() {
     const navigate = useNavigate();
-    const { data: postsData, isLoading: postsDataLoader } = useQuery(
+    const [messageApi, contextHolder] = message.useMessage();
+    const { data: postsData, isLoading: postsDataLoader, refetch: postRefresh } = useQuery(
         "posts",
         () => PostServices.getPosts()
     );
@@ -16,6 +19,26 @@ function AdminPosts() {
         postsData?.data?.results,
         [postsData?.data?.results]
     );
+
+    const { mutateAsync: deletePostRequest, isLoading: deletePostLoader } = useMutation(PostServices.deletePostById)
+
+    const deletePostHandler = (singleData) => {
+        // console.log(singleData,'singleData');
+        const { id: postId } = singleData;
+        // console.log(postId,'postId');
+        confirm({
+            title: "Do you want to delete this post?",
+            icon: <ExclamationCircleOutlined />,
+            onOk() {
+                deletePostRequest(postId, {
+                    onSuccess: () => {
+                        messageApi.success("Post deleted successfully!");
+                        postRefresh();
+                    }
+                })
+            }
+        })
+    }
 
     const columns = [
         {
@@ -73,15 +96,16 @@ function AdminPosts() {
         {
             title: "Delete",
             key: "delete",
-            render: (singleCategory) => {
+            render: (singleData) => {
                 return (
-                    <Button type='primary' danger>Delete</Button>
+                    <Button type='primary' danger onClick={() => deletePostHandler(singleData)}>Delete</Button>
                 )
             }
         }
     ]
     return (
         <div>
+            {contextHolder}
             <Row
                 type="flex"
                 justify="space-between"

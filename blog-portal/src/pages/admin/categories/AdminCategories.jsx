@@ -1,11 +1,11 @@
-import { Button, Col, Row, Table, message } from 'antd';
+import { Button, Col, Modal, Row, Table, message } from 'antd';
 import React, { useMemo } from 'react'
 import { useMutation, useQuery } from 'react-query';
 import { CategoryServices } from '../../../services/categories.services';
-import confirm from 'antd/es/modal/confirm';
 import {ExclamationCircleOutlined} from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom';
 import { AuthenticatedRoutesNames } from '../../../utilities/util.constant';
+const {confirm } = Modal;
 
 function AdminCategories() {
     const navigate = useNavigate();
