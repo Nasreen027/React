@@ -71,9 +71,9 @@ function AdminCategories() {
         {
             title: "Edit",
             key: "edit",
-            render: (singleData) => {
+            render: (singleCategory) => {
                 return (
-                    <Button type='primary'>Edit</Button>
+                    <Button type='primary'onClick={()=>editCategoryHandler(singleCategory)} >Edit</Button>
                 )
             }
         },

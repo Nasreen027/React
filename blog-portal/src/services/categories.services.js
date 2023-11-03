@@ -25,6 +25,11 @@ const response = ApiService.post(categoriesServicesUrls,payload);
 return response;
 }
 
+const editCategoryById = (categoryData) => {
+    const response = ApiService.put(categoriesServicesUrls, categoryData);
+    return response;
+}
+
 export const CategoryServices = {
     getCategories,
     getCategoryById,
