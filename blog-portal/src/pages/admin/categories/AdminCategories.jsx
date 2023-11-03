@@ -37,6 +37,11 @@ function AdminCategories() {
                 })
             }
         })
+    };
+
+    const editCategoryHandler = (singleCategory) => {
+        const {cat_id: categoryId} = singleCategory;
+        
     }
 
     const columns = [
