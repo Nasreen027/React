@@ -12,7 +12,7 @@ function AddEditPost() {
     const [messageApi, contextHolder] = message.useMessage();
     
     const onFinish = (values)=>{
-        // console.log(values,'values');
+        console.log(values,'values');
         addPostRequest(values,{
             onSuccess:()=>{
                 messageApi.success("Post added successfully!");
@@ -28,15 +28,15 @@ function AddEditPost() {
         <Title level={3}>Create Post</Title>
         <Form name="basic" autoComplete="off" onFinish={onFinish}>
                 <Form.Item
-                    name="cat_title"
+                    name="post_title"
                     rules={[
                         {
                             required: true,
-                            message: "Please input your category title!",
+                            message: "Please input your post title!",
                         },
                     ]}
                 >
-                    <Input placeholder="Category Title" />
+                    <Input placeholder="Post Title" />
                 </Form.Item>
 
                 <Form.Item>
