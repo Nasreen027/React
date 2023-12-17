@@ -20,13 +20,13 @@ const deleteCategoryById = (categoryId) => {
 };
 
 const addCategory = (payload) => {
-// console.log(payload,'payload');
-const response = ApiService.post(categoriesServicesUrls,payload);
+console.log(payload,'payload');
+const response = ApiService.post(categoriesServicesUrls.getCategoriesUrl,payload);
 return response;
 }
 
 const editCategoryById = (categoryData) => {
-    const response = ApiService.put(categoriesServicesUrls, categoryData);
+    const response = ApiService.put(categoriesServicesUrls.getCategoriesUrl, categoryData);
     return response;
 }
 

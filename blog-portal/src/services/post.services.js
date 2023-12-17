@@ -15,7 +15,7 @@ const getPostById = (postId) => {
 }
 
 const addPost = (payload) => {
-// console.log(payload,'payload');
+console.log(payload,'payload');
 const response = ApiService.post(postServicesUrls.getPosts, payload);
 return response;
 }

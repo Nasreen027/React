@@ -14,7 +14,12 @@ const get = (url, queryParams = {}) => {
 };
 
 const post = (url, data) => {
-    const response = apiSauceInstance.post(url, data);
+    const response = apiSauceInstance.post(url, data,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+          // Include any other headers your API might require
+        },
+    });
     return response;
 };
 
