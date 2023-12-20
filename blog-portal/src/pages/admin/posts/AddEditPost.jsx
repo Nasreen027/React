@@ -5,6 +5,7 @@ import { PostServices } from '../../../services/post.services';
 import { useNavigate } from 'react-router-dom';
 import { AuthenticatedRoutesNames } from '../../../utilities/util.constant';
 import { CategoryServices } from '../../../services/categories.services';
+import CustomUpload from '../../../components/CustomUpload/CustomUpload';
 
 function AddEditPost() {
     const {Title} = Typography;
@@ -122,6 +123,9 @@ function AddEditPost() {
                     ]}
                 >
                     <Input placeholder="Post Tags" />
+                </Form.Item>
+                <Form.Item>
+                    <CustomUpload/>
                 </Form.Item>
 
                 <Form.Item>
